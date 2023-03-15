@@ -11,6 +11,7 @@
 
     <!-- Bootstrap core CSS -->
 <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/dist/css/bootstrap-icons.css">
 
 <link href="style.css" rel="stylesheet">
 
@@ -22,156 +23,181 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container section">
+    <button id="settings_button" type="button" class="bi bi-gear btn btn-primary">
 
-<div id="match_list_container">
-    <h1 class="display-1">Matches</h1>
-    <table id="match_list" class="" id="matches">
-        <tr>
-            <th>Team Number</th>
-            <th>Match Number</th>
-            <th class="bool">Robot Left Community</th>
-            <th class="bool">Auto Top</th>
-            <th class="bool">Auto Mid</th>
-            <th class="bool">Auto Bottom</th>
-            <th class="bool">Tele Top</th>
-            <th class="bool">Tele Mid</th>
-            <th class="bool">Tele Bottom</th>
-            <th class="bool">Auto Balance</th>
-            <th class="bool">Tele Driver Rating</th>
-            <th class="bool">Cube</th>
-            <th class="bool">Cone</th>
-            <th class="bool">Tipped</th>
-            <th class="bool">Portal</th>
-        </tr>
-    </table>
-    <br/>
-    <button id="add_match" type="button" class="btn btn-primary">New Match</button>
-</div>
-    
-<div id="edit_form" style="display:none" class="container">
-    <h1 class="display-1">Record New Match</h1>
+    Settings
+    </button>
 
-    <div>
-        <h2>Match Info</h2>
+    <div id="settings_container" class="container section" style="display:none">
+        <h1 class="display-2">Settings</h1>
         <div class="input-group input-group-lg">
-            <span class="input-group-text">Team Number</span>
-            <input type="text"  id="team_number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+            <span class="input-group-text">Server</span>
+            <input type="text" value="server.team1912.org/webscout" />
         </div>
-        <div class="input-group input-group-lg">
-            <span class="input-group-text">Match Number</span>
-            <input  type="text"  id="match_number" class="form-control" aria-label="match_number" aria-describedby="match_number">
-        </div>
-
-
-
     </div>
 
+
+
+    <div id="match_list_container" >
+        <h1 class="display-1">Matches</h1>
+        <table id="match_list" class="" id="matches">
+            <tr>
+                <th>Team Number</th>
+                <th>Match Number</th>
+                <th class="bool">Robot Left Community</th>
+                <th class="bool">Auto Top</th>
+                <th class="bool">Auto Mid</th>
+                <th class="bool">Auto Bottom</th>
+                <th class="bool">Tele Top</th>
+                <th class="bool">Tele Mid</th>
+                <th class="bool">Tele Bottom</th>
+                <th class="bool">Auto Balance</th>
+                <th class="bool">Tele Driver Rating</th>
+                <th class="bool">Cube</th>
+                <th class="bool">Cone</th>
+                <th class="bool">Tipped</th>
+                <th class="bool">Portal</th>
+            </tr>
+        </table>
+        <br/>
+        <button id="add_match" type="button" class="btn btn-primary">New Match</button>
+        <button id="upload" type="button" class="btn btn-primary">Upload</button>
+        <button id="download" type="button" class="btn btn-primary">Download</button>
+    </div>
     
-    <div>
-        <h2>Autonomous</h2>
+    <div id="edit_form" style="display:none" class="section container">
+        <h1 class="display-1">Record New Match</h1>
 
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="robot_left_community">
-            <label class="form-check-label" for="robot_left_community">Robot Left Community</label>
-        </div>
-
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="auto_top_row">
-            <label class="form-check-label" for="auto_top_row">Top Row?</label>
-        </div>
-
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="auto_mid_row" >
-            <label class="form-check-label" for="auto_mid_row">Middle Row?</label>
-        </div>
-
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="auto_bottom_row" >
-            <label class="form-check-label" for="auto_bottom_row">Bottom Row?</label>
-        </div>
-
-
-    </div>
-
-
-    <div>
-        <h2>Teleop</h2>
-
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="tele_top_row" >
-            <label class="form-check-label" for="tele_top_row">Top Row?</label>
-        </div>
-
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="tele_mid_row" >
-            <label class="form-check-label" for="tele_mid_row">Middle Row?</label>
-        </div>
-
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="tele_bottom_row" >
-            <label class="form-check-label" for="tele_bottom_row">Bottom Row?</label>
-        </div>
-
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="auto_balance" >
-            <label class="form-check-label" for="tipped">Can Auto-balance?</label>
-        </div>
-
-    </div>
-    <div>
-        <h2>Driver Rating</h2>
-
-        <div class="form-check form-switch">
-            <label class="form-check-label" for="tele_driver_rating_grp">Ranked 1-5</label>
-
-            <div id="tele_driver_rating_grp" class="btn-group" role="group" aria-label="Basic mixed styles example">
-                <button type="button" class="btn btn-primary">1</button>
-                <button type="button" class="btn">2</button>
-                <button type="button" class="btn">3</button>
-                <button type="button" class="btn">4</button>            
-                <button type="button" class="btn">5</button>
+        <div>
+            <h2>Match Info</h2>
+            <div class="input-group input-group-lg">
+                <span class="input-group-text">Team Number</span>
+                <input type="text"  id="team_number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+            </div>
+            <div class="input-group input-group-lg">
+                <span class="input-group-text">Match Number</span>
+                <input  type="text"  id="match_number" class="form-control" aria-label="match_number" aria-describedby="match_number">
             </div>
 
-            <input type="hidden" id="tele_driver_rating" value="1"/>
+
+
         </div>
-
-    </div>
-
-
-    <div>
-        <h2>Bot Capabilities</h2>
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="cube" >
-            <label class="form-check-label" for="cube">Got Cube?</label>
-        </div>
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="cone" >
-            <label class="form-check-label" for="cone">Got Cone?</label>
-        </div>
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="tipped" >
-            <label class="form-check-label" for="tipped">Tipped Cone?</label>
-        </div>        
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="portal" >
-            <label class="form-check-label" for="portal">Fetch off Portal?</label>
-        </div>
-
-
-    </div>
-
-
-    <textarea id="match_details" rows="3" placeholder="" >test</textarea>
-
-    <br/>
-    <button id="save_button" type="button" class="btn btn-primary">Save</button>
-    <button id="cancel_button" type="button" class="btn btn-warning">Cancel</button>
-
-</div>
 
     
+        <div>
+            <h2>Autonomous</h2>
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="robot_left_community">
+                <label class="form-check-label" for="robot_left_community">Robot Left Community</label>
+            </div>
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="auto_top_row">
+                <label class="form-check-label" for="auto_top_row">Top Row?</label>
+            </div>
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="auto_mid_row" >
+                <label class="form-check-label" for="auto_mid_row">Middle Row?</label>
+            </div>
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="auto_bottom_row" >
+                <label class="form-check-label" for="auto_bottom_row">Bottom Row?</label>
+            </div>
+
+
+        </div>
+
+
+        <div>
+            <h2>Teleop</h2>
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="tele_top_row" >
+                <label class="form-check-label" for="tele_top_row">Top Row?</label>
+            </div>
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="tele_mid_row" >
+                <label class="form-check-label" for="tele_mid_row">Middle Row?</label>
+            </div>
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="tele_bottom_row" >
+                <label class="form-check-label" for="tele_bottom_row">Bottom Row?</label>
+            </div>
+
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="auto_balance" >
+                <label class="form-check-label" for="tipped">Can Auto-balance?</label>
+            </div>
+
+        </div>
+        <div>
+            <h2>Driver Rating</h2>
+
+            <div class="form-check form-switch">
+                <label class="form-check-label" for="tele_driver_rating_grp">Ranked 1-5</label>
+
+                <div id="tele_driver_rating_grp" class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <button type="button" class="btn btn-primary">1</button>
+                    <button type="button" class="btn">2</button>
+                    <button type="button" class="btn">3</button>
+                    <button type="button" class="btn">4</button>            
+                    <button type="button" class="btn">5</button>
+                </div>
+
+                <input type="hidden" id="tele_driver_rating" value="1"/>
+            </div>
+
+        </div>
+
+
+        <div>
+            <h2>Bot Capabilities</h2>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="cube" >
+                <label class="form-check-label" for="cube">Got Cube?</label>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="cone" >
+                <label class="form-check-label" for="cone">Got Cone?</label>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="tipped" >
+                <label class="form-check-label" for="tipped">Tipped Cone?</label>
+            </div>        
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="portal" >
+                <label class="form-check-label" for="portal">Fetch off Portal?</label>
+            </div>
+
+
+        </div>
+
+
+        <textarea id="match_details" rows="3" placeholder="" >test</textarea>
+
+        <br/>
+        <button id="save_button" type="button" class="btn btn-primary">Save</button>
+        <button id="cancel_button" type="button" class="btn btn-warning">Cancel</button>
+    </div>
+
+    <div id="sync_container" class="section container" style="display:none">
+        <h2>Sync Status</h2>
+        <ul id="sync_messages">
+
+        </ul>
+         <button id="sync_hide" type="button" class="btn btn-warning">Clear</button>
+
+    </div>  
+
 </div>
+
+
 </body>
 </html>
 <script>
@@ -183,6 +209,12 @@ $('#tele_driver_rating_grp > button').click(function(){
     $("#tele_driver_rating").val(this.textContent);
 })
 
+$('#sync_hide').click(function(){
+    $("#sync_messages").text("");
+    $('#sync_container').hide();
+});
+    
+
 $('#add_match').click(function(){
     $('#edit_form').show();
     $('#match_list_container').hide();
@@ -192,6 +224,24 @@ $('#cancel_button').click(function() {
     $('#edit_form').hide();
     $('#match_list_container').show();
 })
+
+$('#upload').click(function(){
+    //$('#edit_form').show();
+    //$('#match_list_container').hide();
+    $('#sync_container').show();
+    upload();
+});
+
+$('#download').click(function(){
+    //$('#edit_form').show();
+    //$('#match_list_container').hide();
+    $('#sync_container').show();
+    download();
+});
+
+$('#settings_button').click(function(){
+    $("#settings_container").toggle();
+});
 
 $('#save_button').click(function(){
 
@@ -289,10 +339,14 @@ function matchList() {
                         td.addClass("yellow");
                         tr.append(td);
                         break;
-                    default:
+                    case 1:
                         td.addClass("green");
                         tr.append(td);
                         break;
+                    default:
+                        td.addClass("red");
+                        break;
+
                 }
             }
 

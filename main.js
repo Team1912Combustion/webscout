@@ -59,6 +59,57 @@ class Match {
 }
 
 
-    function boolToFloat(b) {
-        return b == true ? 1 :  0;
+function boolToFloat(b) {
+    return b == true ? 1 :  0;
+}
+
+//  Upload matches to server
+function upload() {
+    var matches = Match.getMatches();
+    for(var i = 0; i < matches.length; i++) {
+        var match = matches[i];
+        upload_match(match);
     }
+}
+
+function upload_match(match) {
+    console.log(localStorage.getItem(match));
+    $.ajax({
+        crossDomain: true,
+        data: localStorage.getItem(match),
+        url: $("#server").val() + "/upload/" + match,
+        success:function(data) {
+            var msg = $("<li  class='list-group-item'>" + match + " success</li>");
+            $("#sync_messages").append(msg);
+        },
+        error:function(data) {
+            var msg = $("<li class='list-group-item'>" + match + " error</li>");
+            $("#sync_messages").append(msg);
+        }
+    });
+}
+
+
+
+function download_matches() {
+
+    $.ajax({
+        crossDomain: true,
+        data: localStorage.getItem(match),
+        url: $("#server").val(),
+        success:function(data) {
+            var msg = $("<li  class='list-group-item'>Download matches - success</li>");
+            $("#sync_messages").append(msg);
+            localStorage.clear();
+            var matches = Object.assign(new Match, JSON.parse(localStorage.getItem(name)));
+            var objs = data.map(JSON.parse);
+
+            console.log(objs);
+
+        },
+        error:function(data) {
+            var msg = $("<li  class='list-group-item'>Download matches - fail</li>");
+            $("#sync_messages").append(msg);
+        }
+    });
+}
