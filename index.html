@@ -9,9 +9,6 @@
     <title>Blog Template · Bootstrap v5.0</title>
     <script src="static/jquery.js"></script>
 
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-
     <!-- Bootstrap core CSS -->
 <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -25,9 +22,11 @@
 </head>
 <body>
 
+<div class="container">
+
 <div id="match_list_container">
     <h1 class="display-1">Matches</h1>
-    <table id="match_list" class="container" style="border: solid black 1px" id="matches">
+    <table id="match_list" class="" id="matches">
         <tr>
             <th>Team Number</th>
             <th>Match Number</th>
@@ -172,7 +171,7 @@
 </div>
 
     
-
+</div>
 </body>
 </html>
 <script>
@@ -206,7 +205,6 @@ $('#save_button').click(function(){
     } else {
         $('#team_number').removeClass("is-invalid");
     }
-return false;
 
     if(isNaN(parseInt(match_number))) {
         console.log("Bad team number");
