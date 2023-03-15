@@ -9,25 +9,34 @@ td.cap {
 
 td.green {
     background-color: #00FF00;
+    text-color: #00FF00;
 }
 
 td.red {
     background-color: #FF0000;
+    text-color: #FF0000;
 }
 
 td.orange {
     background-color: #ec850f;
+        text-color: #ec850f;
 }
 
 td.dark_orange {
     background-color: #fe6615;
+    text-color: #fe6615;
+
 }
 
 td.yellow {
     background-color: #bfff00;
+    text-color: #bfff00;
+
 }
 td.blue {
     background-color: #0071f1;
+    text-color: #0071f1;
+
 }
 
 bold {

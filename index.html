@@ -264,11 +264,14 @@ function matchList() {
 
             } else if(value == false) {
                 td.addClass("red");
+                td.text(boolToFloat(value));
                 tr.append(td);
             } else if(value == true) {
                 td.addClass('green');
+                td.text(boolToFloat(value));
                 tr.append(td);
             } else if(key == "tele_driver_rating") {
+                td.text(value);
                 switch(parseInt(value)) {
                     case 5:
                         td.addClass("red");

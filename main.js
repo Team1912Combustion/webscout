@@ -13,7 +13,7 @@ var matches;
 class Match {
 
     static getMatches() {
-        return Object.keys(localStorage);
+        return Object.keys(localStorage).sort();
 
     }
 
@@ -57,3 +57,8 @@ class Match {
             this.match_details = match_details;
         }
 }
+
+
+    function boolToFloat(b) {
+        return b == true ? 1 :  0;
+    }
