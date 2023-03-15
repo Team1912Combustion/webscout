@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Blog Template · Bootstrap v5.0</title>
+    <script src="static/jquery.js"></script>
+
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="style.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
+
+    <script src="main.js"></script>
+
+
+</head>
+<body>
+
+<div id="match_list_container">
+    <h1 class="display-1">Matches</h1>
+    <table id="match_list" class="container" style="border: solid black 1px" id="matches">
+        <tr>
+            <th>Team Number</th>
+            <th>Match Number</th>
+            <th class="bool">Robot Left Community</th>
+            <th class="bool">Auto Top</th>
+            <th class="bool">Auto Mid</th>
+            <th class="bool">Auto Bottom</th>
+            <th class="bool">Tele Top</th>
+            <th class="bool">Tele Mid</th>
+            <th class="bool">Tele Bottom</th>
+            <th class="bool">Auto Balance</th>
+            <th class="bool">Tele Driver Rating</th>
+            <th class="bool">Cube</th>
+            <th class="bool">Cone</th>
+            <th class="bool">Tipped</th>
+            <th class="bool">Portal</th>
+        </tr>
+    </table>
+    <br/>
+    <button id="add_match" type="button" class="btn btn-primary">New Match</button>
+</div>
+    
+<div id="edit_form" style="display:none" class="container">
+    <h1 class="display-1">Record New Match</h1>
+
+    <div>
+        <h2>Match Info</h2>
+        <div class="input-group input-group-lg">
+            <span class="input-group-text">Team Number</span>
+            <input type="text"  id="team_number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        </div>
+        <div class="input-group input-group-lg">
+            <span class="input-group-text">Match Number</span>
+            <input  type="text"  id="match_number" class="form-control" aria-label="match_number" aria-describedby="match_number">
+        </div>
+
+
+
+    </div>
+
+    
+    <div>
+        <h2>Autonomous</h2>
+
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="robot_left_community">
+            <label class="form-check-label" for="robot_left_community">Robot Left Community</label>
+        </div>
+
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="auto_top_row">
+            <label class="form-check-label" for="auto_top_row">Top Row?</label>
+        </div>
+
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="auto_mid_row" >
+            <label class="form-check-label" for="auto_mid_row">Middle Row?</label>
+        </div>
+
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="auto_bottom_row" >
+            <label class="form-check-label" for="auto_bottom_row">Bottom Row?</label>
+        </div>
+
+
+    </div>
+
+
+    <div>
+        <h2>Teleop</h2>
+
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="tele_top_row" >
+            <label class="form-check-label" for="tele_top_row">Top Row?</label>
+        </div>
+
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="tele_mid_row" >
+            <label class="form-check-label" for="tele_mid_row">Middle Row?</label>
+        </div>
+
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="tele_bottom_row" >
+            <label class="form-check-label" for="tele_bottom_row">Bottom Row?</label>
+        </div>
+
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="auto_balance" >
+            <label class="form-check-label" for="tipped">Can Auto-balance?</label>
+        </div>
+
+    </div>
+    <div>
+        <h2>Driver Rating</h2>
+
+        <div class="form-check form-switch">
+            <label class="form-check-label" for="tele_driver_rating_grp">Ranked 1-5</label>
+
+            <div id="tele_driver_rating_grp" class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <button type="button" class="btn btn-primary">1</button>
+                <button type="button" class="btn">2</button>
+                <button type="button" class="btn">3</button>
+                <button type="button" class="btn">4</button>            
+                <button type="button" class="btn">5</button>
+            </div>
+
+            <input type="hidden" id="tele_driver_rating" value="1"/>
+        </div>
+
+    </div>
+
+
+    <div>
+        <h2>Bot Capabilities</h2>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="cube" >
+            <label class="form-check-label" for="cube">Got Cube?</label>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="cone" >
+            <label class="form-check-label" for="cone">Got Cone?</label>
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="tipped" >
+            <label class="form-check-label" for="tipped">Tipped Cone?</label>
+        </div>        
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="portal" >
+            <label class="form-check-label" for="portal">Fetch off Portal?</label>
+        </div>
+
+
+    </div>
+
+
+    <textarea id="match_details" rows="3" placeholder="" >test</textarea>
+
+    <br/>
+    <button id="save_button" type="button" class="btn btn-primary">Save</button>
+    <button id="cancel_button" type="button" class="btn btn-warning">Cancel</button>
+
+</div>
+
+    
+
+</body>
+</html>
+<script>
+
+
+$('#tele_driver_rating_grp > button').click(function(){
+    $("#tele_driver_rating_grp > button").removeClass("btn-primary");
+    $(this).addClass("btn-primary");
+    $("#tele_driver_rating").val(this.textContent);
+})
+
+$('#add_match').click(function(){
+    $('#edit_form').show();
+    $('#match_list_container').hide();
+});
+    
+$('#cancel_button').click(function() {
+    $('#edit_form').hide();
+    $('#match_list_container').show();
+})
+
+$('#save_button').click(function(){
+
+    var team_number = $('#team_number').val();
+    var match_number = $('#match_number').val();
+    console.log(parseInt(team_number));
+    if(isNaN(parseInt(team_number))) {
+        console.log("Bad team number");
+        $('#team_number').addClass("is-invalid");
+        return false;
+    } else {
+        $('#team_number').removeClass("is-invalid");
+    }
+return false;
+
+    if(isNaN(parseInt(match_number))) {
+        console.log("Bad team number");
+        $('#match_number').addClass("is-invalid");
+        return false;
+    
+    } else {
+        $('#match_number').removeClass("is-invalid");
+    }
+
+    var match_details = $('#match_details').val();
+
+    var match = new Match(
+        $('#team_number').val(),
+        $('#match_number').val(),
+        $('#robot_left_community').is(":checked"),
+        $('auto_top_row').is(":checked"),
+        $('#auto_mid_row').is(":checked"),
+        $('#auto_bottom_row').is(":checked"),
+        $('#tele_top_row').is(":checked"),
+        $('#tele_mid_row').is(":checked"),
+        $('#tele_bottom_row').is(":checked"),
+        $('#auto_balance').is(":checked"),
+        $('#tele_driver_rating').val(),
+        $('#cube').is(":checked"),
+        $('#cone').is(":checked"),
+        $('#tipped').is(":checked"),
+        $('#portal').is(":checked"),
+        match_details,
+    );
+
+    window.location.reload();
+
+    localStorage.setItem(match.getMatchID(), JSON.stringify(match));
+})
+
+function matchList() {
+    const matches = Match.getMatches();
+    const container = $('<div class="container text-center">');
+    var ml = $("#match_list");
+
+    for (let i = 0; i < matches.length; i++) {
+        var tr = $("<tr></tr>");
+        ml.append(tr);
+        var name = matches[i];
+
+        var match = Object.assign(new Match, JSON.parse(localStorage.getItem(name)));
+        for (const [key, value] of Object.entries(match)) {
+            var td = $("<td class='cap'>a</td>");
+            td.text("");
+            if(key == "team_number" || key == "match_number") {
+                td.addClass("blue");
+                td.addClass("bold");
+                td.text(value);
+                tr.append(td);
+            } else if(key == "match_details") {
+
+            } else if(value == false) {
+                td.addClass("red");
+                tr.append(td);
+            } else if(value == true) {
+                td.addClass('green');
+                tr.append(td);
+            } else if(key == "tele_driver_rating") {
+                switch(parseInt(value)) {
+                    case 5:
+                        td.addClass("red");
+                        tr.append(td);
+                        break;
+                    case 4:
+                        td.addClass("dark_orange");
+                        tr.append(td);
+                        break;
+                    case 3:
+                        td.addClass("orange");
+                        tr.append(td);
+                        break;
+                    case 2:
+                        td.addClass("yellow");
+                        tr.append(td);
+                        break;
+                    default:
+                        td.addClass("green");
+                        tr.append(td);
+                        break;
+                }
+            }
+
+        }
+    }
+}
+
+function matchListOld() {
+    const matches = Match.getMatches()
+    console.log(matches)
+    const container = $('<div class="container text-center">');
+    for (let i = 0; i < matches.length; i++) {
+        var name = matches[i]
+        //var data = JSON.parse(localStorage.getItem(name));
+        var data = Object.assign(new Match, JSON.parse(localStorage.getItem(name)));
+        console.log(data);
+        const row = $('<div class="row">')
+        const column1 = $('<div class="col">')
+        column1.text(name)
+        const column2 = $('<div class="col">')
+        column2.text(('TEAM NUMBER' || data.team_number) + '\n' + ('MATCH NUMBER' || data.match_number))
+        column2.text(data.getMatchID());
+        row.append(column1)
+        row.append(column2)
+        container.append(row)
+    }
+    $('#matches').append(container)
+}
+matchList()
+
+</script>

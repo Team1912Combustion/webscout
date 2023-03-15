@@ -1,0 +1,60 @@
+td.cap {
+    border: solid black 1px;
+    min-width: 50px;
+    min-height: 50px;
+    font-weight: bold;
+
+
+}
+
+td.green {
+    background-color: #00FF00;
+}
+
+td.red {
+    background-color: #FF0000;
+}
+
+td.orange {
+    background-color: #ec850f;
+}
+
+td.dark_orange {
+    background-color: #fe6615;
+}
+
+td.yellow {
+    background-color: #bfff00;
+}
+td.blue {
+    background-color: #0071f1;
+}
+
+bold {
+    font-weight: bold;
+}
+
+th {
+    font-size: 10px;
+    padding: 0px;
+    border: solid black 1px;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    height: 200px;
+}
+
+th.bool {
+    max-width: 50px;
+    max-height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+}
+
+
+div#match_list_container, div#edit_form {
+    margin-top: 50px;
+
+}
