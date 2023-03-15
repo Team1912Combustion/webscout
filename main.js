@@ -77,7 +77,7 @@ function upload_match(match) {
     $.ajax({
         crossDomain: true,
         data: localStorage.getItem(match),
-        url: $("#server").val() + "/upload/" + match,
+        url: $("#server").val() + "/upload.php?match=" + match,
         success:function(data) {
             var msg = $("<li  class='list-group-item'>" + match + " success</li>");
             $("#sync_messages").append(msg);
