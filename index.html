@@ -330,11 +330,11 @@ function matchList() {
                 tr.append(td);
             } else if(key == "match_details") {
 
-            } else if(value == false) {
+            } else if(value === false) {
                 td.addClass("red");
                 td.text(boolToFloat(value));
                 tr.append(td);
-            } else if(value == true) {
+            } else if(value === true) {
                 td.addClass('green');
                 td.text(boolToFloat(value));
                 tr.append(td);
