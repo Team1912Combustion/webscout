@@ -73,7 +73,6 @@ function upload() {
     var matches = Match.getMatches();
     for(var i = 0; i < matches.length; i++) {
         var match = matches[i];
-	    console.log("UPloading for match: " + match);
         upload_match(match);
     }
 }
@@ -85,7 +84,7 @@ function upload_match(match_name) {
         data: JSON.parse(localStorage.getItem(match_name)),
         url: "./upload.php?match=" + match_name,
         success:function(data) {
-		console.log(data);
+
             var msg = $("<li  class='list-group-item'>" + match_name + " success</li>");
             $("#sync_messages").append(msg);
         },
@@ -125,7 +124,7 @@ function download() {
 					parsed[p] = false
 				}
 			}
-			console.log(typeof(data[match]));
+
 			localStorage.setItem(matches[i],JSON.stringify(parsed));
 		}
 
