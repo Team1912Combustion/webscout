@@ -286,18 +286,23 @@ $('#save_button').click(function(){
         match_details,
     );
 
-    window.location.reload();
+   // window.location.reload();
 
     localStorage.setItem(match.getMatchID(), JSON.stringify(match));
+
+    matchList();
+    $('#edit_form').hide();
+    $('#match_list_container').show();
 })
 
 function matchList() {
+    $('.dynamic').remove();
     const matches = Match.getMatches();
     const container = $('<div class="container text-center">');
     var ml = $("#match_list");
 
     for (let i = 0; i < matches.length; i++) {
-        var tr = $("<tr></tr>");
+        var tr = $("<tr class='dynamic'></tr>");
         ml.append(tr);
         var name = matches[i];
 
