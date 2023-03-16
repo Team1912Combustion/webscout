@@ -68,22 +68,24 @@ function upload() {
     var matches = Match.getMatches();
     for(var i = 0; i < matches.length; i++) {
         var match = matches[i];
+	    console.log("UPloading for match: " + match);
         upload_match(match);
     }
 }
 
-function upload_match(match) {
-    console.log(localStorage.getItem(match));
+function upload_match(match_name) {
     $.ajax({
         crossDomain: true,
-        data: localStorage.getItem(match),
-        url: $("#server").val() + "/upload.php?match=" + match,
+	method: "POST",
+        data: JSON.parse(localStorage.getItem(match_name)),
+        url: "./upload.php?match=" + match_name,
         success:function(data) {
-            var msg = $("<li  class='list-group-item'>" + match + " success</li>");
+		console.log(data);
+            var msg = $("<li  class='list-group-item'>" + match_name + " success</li>");
             $("#sync_messages").append(msg);
         },
         error:function(data) {
-            var msg = $("<li class='list-group-item'>" + match + " error</li>");
+            var msg = $("<li class='list-group-item'>" + match_name + " error</li>");
             $("#sync_messages").append(msg);
         }
     });
@@ -91,20 +93,37 @@ function upload_match(match) {
 
 
 
-function download_matches() {
+function download() {
 
     $.ajax({
         crossDomain: true,
-        data: localStorage.getItem(match),
-        url: $("#server").val(),
+        url: "./matches.json",
         success:function(data) {
             var msg = $("<li  class='list-group-item'>Download matches - success</li>");
             $("#sync_messages").append(msg);
             localStorage.clear();
-            var matches = Object.assign(new Match, JSON.parse(localStorage.getItem(name)));
-            var objs = data.map(JSON.parse);
-
-            console.log(objs);
+            //var matches = Object.assign(new Match, JSON.parse(data));
+            var objs = data;
+		var matches = Object.keys(data);
+		for(var i = 0; i < matches.length; i++) {
+			var match = matches[i];
+			var match_obj = Object.assign(new Match, JSON.parse(data[match]));
+			//for (const property in match_obj) {
+  			//	console.log(`${property}: ${object[property]}`);
+			// }
+			const parsed = JSON.parse(data[match])
+			for (const p in parsed) {
+				const v = parsed[p]
+				if (v == "true") {
+					parsed[p] = true
+				}
+				if (v == "false") {
+					parsed[p] = false
+				}
+			}
+			console.log(typeof(data[match]));
+			localStorage.setItem(matches[i],JSON.stringify(parsed));
+		}
 
         },
         error:function(data) {

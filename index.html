@@ -305,6 +305,9 @@ function matchList() {
         for (const [key, value] of Object.entries(match)) {
             var td = $("<td class='cap'>a</td>");
             td.text("");
+			console.log("Key: " + key);
+			console.log("Value: " + value);
+			console.log("Type: " + typeof(value));
             if(key == "team_number" || key == "match_number") {
                 td.addClass("blue");
                 td.addClass("bold");
