@@ -61,6 +61,7 @@ class Match {
 function clearData() {
 
     localStorage.clear();
+    matchList();
 
 }
 
