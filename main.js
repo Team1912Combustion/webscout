@@ -127,7 +127,7 @@ function download() {
 
 			localStorage.setItem(matches[i],JSON.stringify(parsed));
 		}
-
+        matchList();
         },
         error:function(data) {
             var msg = $("<li  class='list-group-item'>Download matches - fail</li>");
