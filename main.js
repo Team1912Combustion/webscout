@@ -58,6 +58,11 @@ class Match {
         }
 }
 
+function clearData() {
+
+    localStorage.clear();
+
+}
 
 function boolToFloat(b) {
     return b == true ? 1 :  0;
@@ -101,7 +106,6 @@ function download() {
         success:function(data) {
             var msg = $("<li  class='list-group-item'>Download matches - success</li>");
             $("#sync_messages").append(msg);
-            localStorage.clear();
             //var matches = Object.assign(new Match, JSON.parse(data));
             var objs = data;
 		var matches = Object.keys(data);

@@ -29,6 +29,10 @@
     Settings
     </button>
 
+    <button id="clear_data" type="button" class="bi bi-trash btn btn-danger">Clear Data</button>
+
+
+
     <div id="settings_container" class="container section" style="display:none">
         <h1 class="display-2">Settings</h1>
         <div class="input-group input-group-lg">
@@ -225,6 +229,10 @@ $('#cancel_button').click(function() {
     $('#match_list_container').show();
 })
 
+$('#clear_data').click(function() {
+    clear_data();
+})
+
 $('#upload').click(function(){
     //$('#edit_form').show();
     //$('#match_list_container').hide();
@@ -237,6 +245,8 @@ $('#download').click(function(){
     //$('#match_list_container').hide();
     $('#sync_container').show();
     download();
+    matchList();
+
 });
 
 $('#settings_button').click(function(){
