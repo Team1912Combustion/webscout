@@ -299,7 +299,7 @@ $('#save_button').click(function(){
    // window.location.reload();
 
     localStorage.setItem(match.getMatchID(), JSON.stringify(match));
-
+    resetEditForm();
     matchList();
     $('#edit_form').hide();
     $('#match_list_container').show();

@@ -136,3 +136,10 @@ function download() {
         }
     });
 }
+
+function resetEditForm() {
+    $("input").val("");
+    $('*:checkbox').prop("checked",false);
+    $('textarea').text("");
+
+}
